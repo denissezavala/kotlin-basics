@@ -36,7 +36,7 @@ class HigherOrderFunctions {
         println(greet("Tom"))
     }
 
-    fun greetLuisInspanish() {
+    fun greetLuisInSpanish() {
         val greet = buildGreeter(inEnglish = false)
         println(greet("Luis"))
     }
