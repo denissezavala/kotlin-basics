@@ -1,9 +1,11 @@
 /** Functions **/
+
 fun sum(a: Int, b: Int): Int {
-    return a + b
+    val theSum = a + b
+    return theSum
 }
 
-fun sameSum(a: Int, b: Int) = a + b
+fun sameSum(a: Int, b: Int): Int = a + b
 
 // "void" functions
 fun printSum(a: Int, b: Int): Unit {
@@ -24,7 +26,10 @@ fun readOnlyVariables() {
 
 fun mutableVariables() {
     var counter = 5
-    counter++;
+    counter++
+    counter = 10
+
+    println(counter)
 }
 
 /** Strings **/
@@ -38,61 +43,37 @@ fun templates() {
 /** Conditionals **/
 
 fun max(a: Int, b: Int): Int {
-    if (a > b) {
-        return a
+    return if (a > b) {
+        val somethingElse = ""
+        a
     } else {
-        return b
+        b
     }
 }
 
 /** `if` is an expression **/
 fun sameMax(a: Int, b: Int) = if (a > b) a else b
 
-/** Nullable types **/
-fun nullableTypes() {
-    val name: String = ""
-    // name = null
-    var sport: String? = null
-    sport = "Basketball"
-}
-
-fun nullChecks(runnerName: String, racesRun: Int?) {
-    if (racesRun == null) {
-        println("don't know if $runnerName has run any races")
-    } else {
-        println("$runnerName has run $racesRun races")
-    }
-
-    // val endOfYearRaces = racesRun + 1
-
-    if (racesRun is Int) {
-        println("$runnerName will likely have run ${racesRun + 1} at the end of the year")
-    }
-
-    if (racesRun is Int && racesRun == 0) {
-        println("$runnerName is not a very avid racer")
-    }
-}
 
 /** Loops **/
 fun forLoop() {
-    val events = listOf("swimming", "cycling", "running")
+    val events: List<String> = listOf("swimming", "cycling", "running")
     for (index in events.indices) {
         println("event number $index in a triathlon is ${events[index]}")
     }
 }
 
 /** When **/
-fun whenz(name: String, sport: Any) {
-    val personKind = when (sport) {
-        "swimming" -> "swimmer"
-        is Number -> "accountant"
-        !is String -> "don't know"
-        else -> "not a sports person"
-    }
+    fun whenz(name: String, sport: Any) {
+        val personKind = when (sport) {
+            "swimming" -> "swimmer"
+            is Number -> "accountant"
+            !is String -> "don't know"
+            else -> "not a sports person"
+        }
 
-    println("$name is a $personKind")
-}
+        println("$name is a $personKind")
+    }
 
 /** Ranges **/
 fun range() {
@@ -100,13 +81,15 @@ fun range() {
         println(i)
     }
 
+    println("--------------------------")
+
     for (i in 10 downTo 1) {
         println(i)
     }
 }
 
 fun isInRange(x: Int) {
-    if (x in 1..10) {
+    if (x in 1..x+1) {
         println("fits in range")
     }
 }
@@ -114,7 +97,7 @@ fun isInRange(x: Int) {
 fun collectionRanges() {
     val list = listOf("a", "b", "c")
 
-    if (-1 !in 0..list.lastIndex) {
+    if (50 !in 0..list.lastIndex) {
         println("-1 is out of range")
     }
     if (list.size !in list.indices) {
@@ -124,14 +107,14 @@ fun collectionRanges() {
 
 /** Collections **/
 fun collections() {
-    val colours = listOf("red", "green", "blue", "purple", "gray")
+    val colours =  listOf("red", "green", "blue", "purple", "gray")
     colours.forEach { println(it) }
 
     println("colour count: ${colours.filter { it.startsWith("g") }.count()}")
     println("colour count: ${colours.count { it.startsWith("g") }}")
 
     println("first colour in the list ${colours.first()}")
-    println("first colour with three characters ${colours.first { it.length == 3 }}")
+    println("first colour with three characters ${colours.first { colour -> colour.length == 3 }}")
     println("first colour with 6 characters ${colours.firstOrNull { it.length == 6 }}")
 
     println("all colours start with g: ${colours.all { it.startsWith("g") }}")
@@ -142,8 +125,9 @@ fun mutableCollections() {
     list = listOf(1, 2, 3)
 //    list.add(4)
 
-    val mutableList = mutableListOf<Int>()
+    val mutableList = mutableListOf(-1, 0)
     mutableList.add(1)
     mutableList.addAll(listOf(3, 4, 5, 6))
     println(mutableList)
+
 }

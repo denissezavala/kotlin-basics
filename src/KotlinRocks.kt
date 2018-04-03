@@ -1,7 +1,20 @@
 fun main(args: Array<String>) {
     println("Kotlin  R O C K S")
 
-    sum(3, 5)
-    sameSum(3, 5)
-    printSum(3, 5)
+//    val list = mutableListOf("a", "b", "c")
+//    list.replaceAtIndex(1, "f")
+//    println(list)
+
+//    val cow: Animal = Cow()
+//    cow.think()
+//    Cow().think()
+
+//    Clown().foo()
+
+//    Mime().foo()
+//    Mime().foo(1)
+
+//    printColorRGBs()
+
+//    CoolColor.PURPLE.printMood()
 }
